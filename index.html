@@ -25,10 +25,10 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 14px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
             border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.25);
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.4);
             text-align: center;
             max-width: 380px;
             width: 100%;
@@ -103,21 +103,30 @@
             border-radius: 20px;
             background-color: #fff;
         }
-      
+      #fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Envía los fuegos artificiales al fondo */
+    pointer-events: none; /* Evita que bloqueen los clics en la tarjeta */
+}
     </style>
 </head>
 <body>
-
+<!-- Contenedor para los fuegos artificiales -->
+    <div id="fireworks-container"></div>
     <div class="card">
-        <h1>¡Feliz Cumpleaños Natasha!</h1>
+        <h1>¡Feliz Cumple Natasha!</h1>
         <p>
             ¡Espero que seas feliz! 
             <br><br>
-            Que tu día esté lleno de alegría, sorpresas y mucho amor, rodeada de las personas que te quieren. Al igual que Nezuko, tienes una fuerza y una dulzura que hacen que el mundo sea un lugar mejor.
+            Que tu día esté lleno de alegría, sorpresas y mucho amor, rodeada de las personas que te quieren. Al igual que Nezuko, tienes una fortaleza y una dulzura que te hacen única.
                      
         </p>
         <div class="signature">
-            Emaa
+            Ema
         </div>
     </div>
 
@@ -131,6 +140,18 @@
 </audio>
         </div>
     </div>
-
+<script src="https://unpkg.com/fireworks-js/dist/index.umd.js"></script>
+    <script>
+        const container = document.getElementById('fireworks-container');
+        const fireworks = new Fireworks.default(container, {
+            hue: { min: 300, max: 350 },
+            acceleration: 1.05,
+            brightness: { min: 10, max: 80 },
+            particles: 140,
+            trace: 5,
+            explosion: 8
+        });
+        fireworks.start();
+    </script>
 </body>
 </html>
