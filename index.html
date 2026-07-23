@@ -28,11 +28,11 @@
             background: rgba(255, 255, 255, 0.6);
             padding: 15px;
             border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.4);
+            box-shadow: 0 15px 35px /+ rgba(216, 27, 96, 0.4);
             text-align: center;
             max-width: 380px;
             width: 100%;
-            border: 3px solid #ff80ab;
+            /*border: 3px solid #ff80ab;*/
             animation: fadeIn 1.5s ease-in-out;
             margin: 0 auto 20px auto;
         }
@@ -55,14 +55,13 @@
         }
 
         .signature {
-            font-weight: 600;
-            color: #c2185b;
-            font-size: 18px;
-            border-top: 4px dotted #ff80ab;
-            padding-top: 12px;
-            display: inline-block;
-            width: 80%;
-        }
+    font-weight: 600;
+    color: #c2185b;
+    font-size: 18px;
+    display: inline-block;
+    width: 80%;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 12px rgba(255, 255, 255, 0.6);
+}
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -122,12 +121,14 @@
     <div id="fireworks-container"></div>
     <div class="card">
         <h1>¡Feliz Cumple Natasha!</h1>
+      
         <p>
             ¡Espero que seas feliz! 
             <br><br>
             Que tu día esté lleno de alegría, sorpresas y mucho amor, rodeada de las personas que te quieren. Al igual que Nezuko, tienes una fortaleza y una dulzura que te hacen única.
                      
         </p>
+      <div style="text-align: center; color: #ff80ab; font-size: 14px; margin: 15px 0;">🌸🌸🌸🌸🌸</div>
         <div class="signature">
             Ema
         </div>
