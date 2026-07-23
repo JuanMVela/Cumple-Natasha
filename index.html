@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Natasha!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fce8ec; 
+            background-image: url('https://i.pinimg.com/736x/72/18/a4/7218a478e8ad371bac83082c10844bb6.jpg');
+            background-size: auto 95vh;
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: #4a4a4a;
+            padding: 20px;
+            padding-right: 12%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.90);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.25);
+            text-align: center;
+            max-width: 380px;
+            width: 100%;
+            border: 3px solid #ff80ab;
+            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-weight: 600;
+            color: #c2185b;
+            font-size: 18px;
+            border-top: 2px dashed #f8bbd0;
+            padding-top: 12px;
+            display: inline-block;
+            width: 80%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Barra de música inferior --- */
+        .music-player-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #d81b60, #ff4081);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .music-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 500px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .music-label {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        audio {
+            height: 35px;
+            outline: none;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>¡Feliz Cumpleaños Natasha!</h1>
+        <p>
+            ¡Espero que seas feliz! 
+            <br><br>
+            Que tu día esté lleno de alegría, sorpresas y mucho amor, rodeada de las personas que te quieren. Al igual que Nezuko, tienes una fuerza y una dulzura que hacen que el mundo sea un lugar mejor.
+            <br><br>
+            ¡Disfrutá al máximo!
+        </p>
+        <div class="signature">
+            Ema
+        </div>
+    </div>
+
+    <!-- Barra de música inferior -->
+    <div class="music-player-bar">
+        <div class="music-content">
+            <span class="music-label">🎵 Dale play:</span>
+            <audio controls>
+                <source src="https://actions.google.com/sounds/v1/ambiences/gentle_wind.ogg" type="audio/ogg">
+                Tu navegador no soporta el reproductor de audio.
+            </audio>
+        </div>
+    </div>
+
+</body>
+</html>
