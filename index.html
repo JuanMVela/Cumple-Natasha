@@ -144,18 +144,34 @@
 </audio>
         </div>
     </div>
+<!-- Librería de fuegos artificiales -->
 <script src="https://unpkg.com/fireworks-js/dist/index.umd.js"></script>
-    <script>
-        const container = document.getElementById('fireworks-container');
-        const fireworks = new Fireworks.default(container, {
-            hue: { min: 300, max: 350 },
-            acceleration: 1.05,
-           brightness: { min: 50, max: 100 },
-            particles: 60,
-            trace: 4,
-            explosion: 6
-        });
-        fireworks.start();
-    </script>
+<!-- Librería de audio Howler.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+<script>
+    // 1. Configuración del sonido de explosión con Howler
+    const explosionSound = new Howl({
+        src: ['https://actions.google.com/sounds/v1/impacts/crash.ogg'], // Puedes reemplazar este enlace por tu archivo de estallido si lo deseas
+        volume: 0.3
+    });
+
+    // 2. Configuración de los fuegos artificiales optimizados para móviles
+    const container = document.getElementById('fireworks-container');
+    const fireworks = new Fireworks.default(container, {
+        hue: { min: 300, max: 350 },
+        acceleration: 1.05,
+        brightness: { min: 50, max: 100 },
+        particles: 60,
+        trace: 4,
+        explosion: 6
+    });
+    fireworks.start();
+
+    // 3. Desbloquear audio y reproducir estallido al primer toque (requisito de los celulares)
+    document.addEventListener('pointerdown', () => {
+        explosionSound.play();
+    }, { once: true });
+</script>
 </body>
 </html>
