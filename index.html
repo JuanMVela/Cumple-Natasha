@@ -10,31 +10,69 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #fce8ec; 
-            background-image: url('https://i.pinimg.com/736x/72/18/a4/7218a478e8ad371bac83082c10844bb6.jpg');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-color: transparent; /* Transparente para dejar ver el carrusel de GIFs del fondo */
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #4a4a4a;
             padding: 15px;           
+            overflow: hidden; /* Evita scrolls no deseados en móviles */
+        }
+
+        /* --- Carrusel de GIFs para el fondo --- */
+        .background-carousel-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0; /* Detrás de la tarjeta y los fuegos artificiales */
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .background-carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: fadeSlide 15s infinite; /* Duración total del ciclo del carrusel */
+        }
+
+        .background-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Sincronización de tiempos para 3 GIFs en el fondo */
+        .background-carousel-slide:nth-child(1) { animation-delay: 0s; }
+        .background-carousel-slide:nth-child(2) { animation-delay: 2s; }
+        .background-carousel-slide:nth-child(3) { animation-delay: 4s; }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            35% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 15px;
+            background: rgba(255, 255, 255, 0.85); /* Ligeramente más opaca para destacar sobre los GIFs */
+            padding: 20px;
             border-radius: 25px;
-            box-shadow: 0 15px 35px /+ rgba(216, 27, 96, 0.4);
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.4);
             text-align: center;
             max-width: 380px;
             width: 100%;
-            /*border: 3px solid #ff80ab;*/
             animation: fadeIn 1.5s ease-in-out;
             margin: 0 auto 20px auto;
+            z-index: 10; /* Asegura que la tarjeta esté por encima del fondo */
         }
 
         h1 {
@@ -42,8 +80,7 @@
             font-size: 22px;
             margin-bottom: 15px;
             font-weight: 700;
-          text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 12px rgba(255, 255, 255, 0.8);
-}
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 12px rgba(255, 255, 255, 0.8);
         }
 
         p {
@@ -51,17 +88,16 @@
             line-height: 1.6;
             color: #222;
             margin-bottom: 20px;
-
         }
 
         .signature {
-    font-weight: 600;
-    color: #c2185b;
-    font-size: 18px;
-    display: inline-block;
-    width: 80%;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 12px rgba(255, 255, 255, 0.6);
-}
+            font-weight: 600;
+            color: #c2185b;
+            font-size: 18px;
+            display: inline-block;
+            width: 80%;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 12px rgba(255, 255, 255, 0.6);
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -105,20 +141,36 @@
             border-radius: 20px;
             background-color: #fff;
         }
-      #fireworks-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Envía los fuegos artificiales al fondo */
-    pointer-events: none; /* Evita que bloqueen los clics en la tarjeta */
-}
+
+        #fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5; /* Por encima del carrusel de fondo y por debajo de la tarjeta */
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
-<!-- Contenedor para los fuegos artificiales -->
+
+    <!-- Carrusel de GIFs animados para el fondo -->
+    <div class="background-carousel-container">
+        <div class="background-carousel-slide">
+            <img src="https://i.pinimg.com/736x/72/18/a4/7218a478e8ad371bac83082c10844bb6.jpg" alt="Fondo Animado 1">
+        </div>
+        <div class="background-carousel-slide">
+            <img src="https://i.pinimg.com/control1/1200x/72/7c/7e/727c7e185a098f893bc5b3d22ee065c5.jpg">
+        </div>
+        <div class="background-carousel-slide">
+            <img src="https://i.pinimg.com/originals/be/91/87/be9187cda779138b4de6381e259e5630.png" alt="Fondo Animado 3">
+        </div>
+    </div>
+
+    <!-- Contenedor para los fuegos artificiales -->
     <div id="fireworks-container"></div>
+
     <div class="card">
         <h1>¡Feliz Cumple Natasha!</h1>
       
@@ -126,9 +178,10 @@
             ¡Espero que seas feliz! 
             <br><br>
             Que tu día esté lleno de alegría, sorpresas y mucho amor, rodeada de las personas que te quieren. Al igual que Nezuko, tienes una fortaleza y una dulzura que te hacen única.
-                     
         </p>
-      <div style="text-align: center; color: #ff80ab; font-size: 14px; margin: 15px 0;">🌸🌸🌸🌸🌸</div>
+        
+        <div style="text-align: center; color: #ff80ab; font-size: 14px; margin: 15px 0;">🌸🌸🌸🌸🌸</div>
+        
         <div class="signature">
             Ema
         </div>
@@ -139,19 +192,19 @@
         <div class="music-content">
             <span class="music-label">🎵Play:</span>
             <audio id="cancion" controls>
-    <source src="Cumple Natasha.mp3" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-</audio>
+                <source src="Cumple Natasha.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
         </div>
     </div>
-<!-- Librería de fuegos artificiales -->
-    <script src="https://unpkg.com/fireworks-js/dist/index.umd.js"></script>  
- <script>
+
+    <script src="https://unpkg.com/fireworks-js/dist/index.umd.js"></script>
+    <script>
         const container = document.getElementById('fireworks-container');
         const fireworks = new Fireworks.default(container, {
             hue: { min: 300, max: 350 },
             acceleration: 1.05,
-           brightness: { min: 50, max: 100 },
+            brightness: { min: 50, max: 100 },
             particles: 60,
             trace: 4,
             explosion: 6
